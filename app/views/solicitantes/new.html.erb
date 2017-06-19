@@ -1,0 +1,30 @@
+<div class="container">
+  <h1>¡Bienvenido y Bienvenida!</h1>
+</div>
+<%= form_with url: solicitantes_path, builder: BootstrapForm::FormBuilder do |f| %>
+  <%= f.text_field :primer_nombre %>
+  <%= f.text_field :segundo_nombre %>
+  <%= f.text_field :primer_apellido %>
+  <%= f.text_field :segundo_apellido %>
+  <%= f.text_field :corre_ele, label: "Corre-ele (E-mail)" %>
+  <%= f.select :provincia, [
+    "Alberta",
+    "BC",
+    "Manitoba",
+    "New Brunswick",
+    "Newfoundland and Labrador",
+    "Nova Scotia",
+    "North West Territories",
+    "Nunavut",
+    "Ontario",
+    "Prince Edward Island",
+    "Québec",
+    "Saskatchewan",
+    "Yukon"
+    ],
+    label: "Provincia o Territorio de Residencia" %>
+  <%= f.check_box :votaria, label: "Yo votaría desde el exterior si fuera posible." %>
+  <%= f.check_box :servicios, label: "No tengo servicios consulares a menos de 100 kms de mi hogar." %>
+  <%= f.check_box :dpi, label: "Tengo DPI vigente." %>
+  <%= f.check_box :pasaporte, label: "Tengo pasaporte guatemalteco vigente." %>
+<% end %>

@@ -1,0 +1,2 @@
+class SolicitantesController < ApplicationController
+end
