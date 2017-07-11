@@ -3,6 +3,8 @@ Rails.application.routes.draw do
 
   root "bienvenida#index"
 
-  resources :solicitantes, only: [:new, :create]
   resources :bienvenida, only: [:index]
+  resources :contactos, only: [:create, :new]
+  resources :encuestas, only: [:create, :new]
+  resources :solicitantes, only: [:creat, :new]
 end
