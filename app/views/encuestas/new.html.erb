@@ -1,5 +1,6 @@
 <div class="container">
-<%= form_with model: @encuesta, builder: BootstrapForm::FormBuilder do |f| %>
+<%#= form_with model: @encuesta, builder: BootstrapForm::FormBuilder do |f| %>
+<%= bootstrap_form_for @encuesta, builder: BootstrapForm::FormBuilder do |f| %>
 <div class="row">
   <%= f.text_field :primer_nombre, wrapper: { class: "col" } %>
   <%= f.text_field :segundo_nombre, wrapper: { class: "col" } %>
@@ -50,5 +51,7 @@
     <%= f.radio_button :servicios, 0, label: "No", checked: true, inline: true %>
     <%= f.radio_button :servicios, 1, label: "Sí", inline: true %>
   <% end %>
+
+  <%= f.primary "Guardar Respuestas" %>
 <% end %>
 </div>

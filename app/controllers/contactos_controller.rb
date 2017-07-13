@@ -11,8 +11,8 @@ class ContactosController < ApplicationController
       redirect_to root_path
     else
       logger.warn "Failed to save contacto #{@contacto.errors.full_messages}"
-      flash.now.alert = @contacto.errors.full_messages
-      puts "About to render new, alerts: #{alert}"
+      # flash.now.alert = @contacto.errors.full_messages
+      # puts "About to render new, alerts: #{alert}"
       render "new"
     end
   end
