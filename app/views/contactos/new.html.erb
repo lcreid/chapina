@@ -1,0 +1,10 @@
+<div class="container">
+<%= form_with model: @contacto,
+      builder: BootstrapForm::FormBuilder,
+      local: true do |f| %>
+  <%= f.text_field :asunto %>
+  <%= f.text_area :mensaje, rows: 15 %>
+  <%= f.text_field :corre_ele, label: "Corre-ele (E-mail)" %>
+  <%= f.primary "Enviar mensaje" %>
+<% end %>
+</div>
