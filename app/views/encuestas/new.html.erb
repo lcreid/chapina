@@ -1,8 +1,13 @@
-<%= form_with url: solicitantes_path, builder: BootstrapForm::FormBuilder do |f| %>
-  <%= f.text_field :primer_nombre %>
-  <%= f.text_field :segundo_nombre %>
-  <%= f.text_field :primer_apellido %>
-  <%= f.text_field :segundo_apellido %>
+<div class="container">
+<%= form_with model: @encuesta, builder: BootstrapForm::FormBuilder do |f| %>
+<div class="row">
+  <%= f.text_field :primer_nombre, wrapper: { class: "col" } %>
+  <%= f.text_field :segundo_nombre, wrapper: { class: "col" } %>
+</div>
+<div class="row">
+  <%= f.text_field :primer_apellido, wrapper: { class: "col" } %>
+  <%= f.text_field :segundo_apellido, wrapper: { class: "col" } %>
+</div>
   <%= f.text_field :corre_ele, label: "Corre-ele (E-mail)" %>
   <%= f.select :provincia, [
     "Alberta",
@@ -46,3 +51,4 @@
     <%= f.radio_button :servicios, 1, label: "Sí", inline: true %>
   <% end %>
 <% end %>
+</div>

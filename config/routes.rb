@@ -8,5 +8,4 @@ Rails.application.routes.draw do
   resources :bienvenida, only: [:index]
   resources :contactos, only: [:create, :new]
   resources :encuestas, only: [:create, :new]
-  resources :solicitantes, only: [:creat, :new]
 end

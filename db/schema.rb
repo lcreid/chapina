@@ -10,7 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170712051250) do
+ActiveRecord::Schema.define(version: 20170713035522) do
+
+  create_table "encuestas", force: :cascade do |t|
+    t.string "primer_nombre"
+    t.string "segundo_nombre"
+    t.string "primer_apellido"
+    t.string "segundo_apellido"
+    t.string "corre_ele"
+    t.string "provincia"
+    t.boolean "edad"
+    t.boolean "votaria"
+    t.boolean "dpi"
+    t.boolean "pasaporte"
+    t.boolean "servicios"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["corre_ele"], name: "index_encuestas_on_corre_ele"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
