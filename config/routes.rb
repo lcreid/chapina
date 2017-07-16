@@ -4,8 +4,8 @@ Rails.application.routes.draw do
 
   root "bienvenida#index"
 
-  get "quienes_somos", to: "bienvenida#quienes_somos"
   resources :bienvenida, only: [:index]
   resources :contactos, only: [:create, :new]
   resources :encuestas, only: [:create, :new]
+  resources :quienes_somos, only: [:index]
 end
