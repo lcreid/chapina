@@ -1,9 +1,15 @@
+<div class="jumbotron bg-faded">
+  <div class="container text-center">
+    <p class="display-4">
+      Háganos llegar sus comentarios, opiniones, o dudas.
+    </p>
+  </div>
+</div>
 <div class="container">
 <%#= form_with model: @contacto,
       builder: BootstrapForm::FormBuilder,
       local: true do |f| %>
-<%= bootstrap_form_for @contacto,
-      builder: BootstrapForm::FormBuilder do |f| %>
+<%= bootstrap_form_for @contacto do |f| %>
   <%= f.text_field :asunto %>
   <%= f.text_area :mensaje, rows: 15 %>
   <%= f.text_field :corre_ele, label: "Corre-ele (E-mail)" %>
