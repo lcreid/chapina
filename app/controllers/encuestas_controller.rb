@@ -12,7 +12,7 @@ class EncuestasController < ApplicationController
   end
 
   def new
-    @encuesta = Encuesta.new
+    @encuesta = Encuesta.new(provincia: "British Columbia")
   end
 
   private

@@ -1,57 +1,66 @@
+<div class="jumbotron">
+  <div class="container text-center">
+    <p class="display-4">
+      Esta encuesta sirve para...
+    </p>
+  </div>
+</div>
+
 <div class="container">
-<%#= form_with model: @encuesta, builder: BootstrapForm::FormBuilder do |f| %>
-<%= bootstrap_form_for @encuesta, builder: BootstrapForm::FormBuilder do |f| %>
-<div class="row">
-  <%= f.text_field :primer_nombre, wrapper: { class: "col" } %>
-  <%= f.text_field :segundo_nombre, wrapper: { class: "col" } %>
-</div>
-<div class="row">
-  <%= f.text_field :primer_apellido, wrapper: { class: "col" } %>
-  <%= f.text_field :segundo_apellido, wrapper: { class: "col" } %>
-</div>
-  <%= f.text_field :corre_ele, label: "Corre-ele (E-mail)" %>
-  <%= f.select :provincia, [
-    "Alberta",
-    "British Columbia",
-    "Manitoba",
-    "New Brunswick",
-    "Newfoundland and Labrador",
-    "Nova Scotia",
-    "North West Territories",
-    "Nunavut",
-    "Ontario",
-    "Prince Edward Island",
-    "Québec",
-    "Saskatchewan",
-    "Yukon"
-    ],
-    label: "Provincia o Territorio de Residencia" %>
+  <%#= form_with model: @encuesta, builder: BootstrapForm::FormBuilder do |f| %>
+  <%= bootstrap_form_for @encuesta do |f| %>
+  <div class="row">
+    <%= f.text_field :primer_nombre, wrapper: { class: "col" } %>
+    <%= f.text_field :segundo_nombre, wrapper: { class: "col" } %>
+  </div>
+  <div class="row bg-faded">
+    <%= f.text_field :primer_apellido, wrapper: { class: "col" } %>
+    <%= f.text_field :segundo_apellido, wrapper: { class: "col" } %>
+  </div>
+  <div class="row">
+    <%= f.text_field :corre_ele,
+            label: "Corre-ele (E-mail)",
+            wrapper: { class: "col-sm-6" } %>
+    <%= f.select :provincia,
+          [
+            "Alberta",
+            "British Columbia",
+            "Manitoba",
+            "New Brunswick",
+            "Newfoundland and Labrador",
+            "Nova Scotia",
+            "North West Territories",
+            "Nunavut",
+            "Ontario",
+            "Prince Edward Island",
+            "Québec",
+            "Saskatchewan",
+            "Yukon"
+          ],
+          { label: "Provincia o Territorio de Residencia" },
+          wrapper: { class: "col-sm-6" } %>
+  </div>
 
-  <%= f.form_group :edad, label: { text: "Yo tendré la edad para votar en las elecciones en Guatemala en el 2019 (TBC)." } do %>
-    <%= f.radio_button :edad, 0, label: "No", checked: true, inline: true %>
-    <%= f.radio_button :edad, 1, label: "Sí", inline: true %>
-  <% end %>
+  <%= yes_no_no_answer f,
+        :edad,
+        "Tendré la edad para votar en las elecciones en Guatemala en el 2019 (TBC).",
+        class: "bg-faded" %>
 
-  <%= f.form_group :votaria, label: { text: "Yo votaría en la provincia donde resido si fuera posible." } do %>
-    <%= f.radio_button :votaria, 0, label: "No", checked: true, inline: true %>
-    <%= f.radio_button :votaria, 1, label: "Sí", inline: true %>
-  <% end %>
+  <%= yes_no_no_answer f,
+        :votaria,
+        "Votaría en la provincia donde resido si fuera posible." %>
 
-  <%= f.form_group :dpi, label: { text: "Tengo DPI." } do %>
-    <%= f.radio_button :dpi, 0, label: "No", checked: true, inline: true %>
-    <%= f.radio_button :dpi, 1, label: "Sí", inline: true %>
-  <% end %>
+  <%= yes_no_no_answer f, :dpi, "Tengo DPI.", class: "bg-faded" %>
 
-  <%= f.form_group :pasaporte, label: { text: "Tengo pasaporte guatemalteco vigente." } do %>
-    <%= f.radio_button :pasaporte, 0, label: "No", checked: true, inline: true %>
-    <%= f.radio_button :pasaporte, 1, label: "Sí", inline: true %>
-  <% end %>
+  <%= yes_no_no_answer f,
+        :pasaporte,
+        "Tengo pasaporte guatemalteco vigente." %>
 
-  <%= f.form_group :servicios, label: { text: "No tengo servicios consulares a menos de 100 kms de mi hogar." } do %>
-    <%= f.radio_button :servicios, 0, label: "No", checked: true, inline: true %>
-    <%= f.radio_button :servicios, 1, label: "Sí", inline: true %>
-  <% end %>
+  <%= yes_no_no_answer f,
+        :servicios,
+        "No tengo servicios consulares a menos de 100 kms de mi hogar.",
+        class: "bg-faded" %>
 
   <%= f.primary "Guardar Respuestas" %>
-<% end %>
+  <% end %>
 </div>
