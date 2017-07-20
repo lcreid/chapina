@@ -10,12 +10,10 @@
   <%#= form_with model: @encuesta, builder: BootstrapForm::FormBuilder do |f| %>
   <%= bootstrap_form_for @encuesta do |f| %>
   <div class="row">
-    <%= f.text_field :primer_nombre, wrapper: { class: "col" } %>
-    <%= f.text_field :segundo_nombre, wrapper: { class: "col" } %>
+    <%= f.text_field :nombres, wrapper: { class: "col" } %>
   </div>
   <div class="row bg-faded">
-    <%= f.text_field :primer_apellido, wrapper: { class: "col" } %>
-    <%= f.text_field :segundo_apellido, wrapper: { class: "col" } %>
+    <%= f.text_field :apellidos, wrapper: { class: "col" } %>
   </div>
   <div class="row">
     <%= f.text_field :corre_ele,
