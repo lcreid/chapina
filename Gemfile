@@ -10,8 +10,7 @@ end
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.0'
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+gem "pg"
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
 # Use SCSS for stylesheets
@@ -37,13 +36,13 @@ gem 'jbuilder', '~> 2.5'
 
 # For Bootstrap
 gem 'jquery-rails'
-gem 'bootstrap', '~> 4.0.0.alpha6'
+gem 'bootstrap', '~> 4.1.0'
 source 'https://rails-assets.org' do
   gem 'rails-assets-tether', '>= 1.3.3'
 end
 gem 'popper_js'
-gem 'bootstrap_form', git: "https://github.com/bootstrap-ruby/rails-bootstrap-forms.git", branch: "bootstrap-v4"
-# Ebd Bootstrap
+gem 'bootstrap_form', ">= 4.0.0.alpha1"
+# End Bootstrap
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
