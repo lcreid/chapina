@@ -9,7 +9,7 @@ end
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.1.0'
+gem 'rails', '~> 5.2.0'
 gem "pg"
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
@@ -36,6 +36,7 @@ gem 'jbuilder', '~> 2.5'
 
 # For Bootstrap
 gem 'jquery-rails'
+gem 'bootsnap'
 gem 'bootstrap', '~> 4.1.0'
 source 'https://rails-assets.org' do
   gem 'rails-assets-tether', '>= 1.3.3'
