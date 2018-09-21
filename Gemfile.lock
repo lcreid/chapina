@@ -1,3 +1,12 @@
+GIT
+  remote: https://github.com/lcreid/devise-bootstrap-form.git
+  revision: 5b7b81f564137341ea995943f2feb2dfcaae9b59
+  specs:
+    devise-bootstrap-form (0.1.0)
+      bootstrap_form (>= 4.0.0.alpha1)
+      devise
+      rails (>= 5.0.0)
+
 GEM
   remote: https://rubygems.org/
   remote: https://rails-assets.org/
@@ -221,6 +230,7 @@ DEPENDENCIES
   byebug
   capybara (~> 2.13.0)
   devise
+  devise-bootstrap-form!
   devise-i18n
   jbuilder (~> 2.5)
   jquery-rails
