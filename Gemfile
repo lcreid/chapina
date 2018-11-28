@@ -42,7 +42,7 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-tether', '>= 1.3.3'
 end
 gem 'popper_js'
-gem 'bootstrap_form', ">= 4.0.0.alpha1"
+gem 'bootstrap_form', "~> 4.0"
 # End Bootstrap
 
 group :development, :test do
@@ -71,4 +71,4 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'rails-i18n', '~> 5.0.0'
 gem 'devise'
 gem 'devise-i18n'
-gem 'devise-bootstrap-form', github: 'lcreid/devise-bootstrap-form'
+gem 'devise-bootstrap-form'
