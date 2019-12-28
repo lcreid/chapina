@@ -1,4 +1,4 @@
-# rubocop:disable Style/StringLiterals, Metrics/LineLength, Style/EmptyLines
+# rubocop:disable Style/StringLiterals, Metrics/LineLength, Layout/EmptyLines
 
 source 'https://rubygems.org'
 
@@ -9,8 +9,8 @@ end
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
+gem 'pg'
 gem 'rails', '~> 5.2.0'
-gem "pg"
 # Use Puma as the app server
 gem 'puma', '~> 3.12'
 # Use SCSS for stylesheets
@@ -31,18 +31,18 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
-
 # For Bootstrap
-gem 'jquery-rails'
 gem 'bootsnap'
 gem 'bootstrap', '~> 4.0'
+gem 'bootstrap_form', "~> 4.0"
+gem 'devise'
+gem 'devise-bootstrap-form'
+gem 'devise-i18n'
+gem 'jquery-rails'
+gem 'popper_js'
 source 'https://rails-assets.org' do
   gem 'rails-assets-tether', '>= 1.3.3'
 end
-gem 'popper_js'
-gem 'bootstrap_form', "~> 4.0"
 # End Bootstrap
 
 group :development, :test do
@@ -50,25 +50,24 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '~> 2.13.0'
-  gem 'selenium-webdriver'
+  gem 'webdrivers', '~> 4.0'
 end
 
 group :development do
   # Use Capistrano for deployment
   gem 'capistrano-rails'
 
-  # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
-  gem 'web-console', '>= 3.3.0'
   gem 'listen', '>= 3.0.5', '< 3.2'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
+  gem 'web-console', '>= 3.3.0'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'rails-i18n', '~> 5.0.0'
-gem 'devise'
-gem 'devise-i18n'
-gem 'devise-bootstrap-form'
+
+# rubocop:enable Style/StringLiterals, Metrics/LineLength, Layout/EmptyLines
