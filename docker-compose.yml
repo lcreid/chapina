@@ -1,27 +1,22 @@
-version: '3'
+version: '3.3'
 
 # Set up the Selenium container based on the Selenium official:
 # https://github.com/SeleniumHQ/docker-selenium/blob/trunk/docker-compose-v3.yml
 # And:
 # https://medium.com/@retrorubies/chrome-as-a-service-for-rails-testing-b1a45e70fec1
 services:
-  app: &app
+  web: &web
     image: jade:rails-app-2.7-postgres-13-bullseye
-    user: 1000:1000 # $(grep ^$USERNAME /etc/passwd | cut -d: -f4)
     tmpfs:
       - /tmp
-
-  backend: &backend
-    <<: *app
     stdin_open: true
     tty: true
     volumes:
       - .:/app:cached
-      # - rails_cache:/app/tmp/cache
-      - bundle:/usr/local/bundle
+      - rails_cache:/app/tmp/cache
+      - bundle:/app/vendor/bundle
       - node_modules:/app/node_modules
       - packs:/app/public/packs
-      - .dockerdev/.psqlrc:/root/.psqlrc:ro
     environment:
       - NODE_ENV=development
       # You can use DATABASE_URL in non-development situation, but it messes
@@ -39,29 +34,18 @@ services:
       - SELENIUM_SERVER=http://chrome:4444/wd/hub
       - TEST_APP_HOST=server
       - TEST_APP_PORT=3001
+    # Running dev here is a little tricky. You have to remember that Ctrol-C
+    # only stops the container, it doesn't destroy it. So next time you up, it
+    # will complain that the server is already running.
+
+    # It might be okay as long as you remember to start or run the container,
+    # instead of trying up, but I haven't had a chance to test it yet.
+    command: bin/rails s -b 0.0.0.0
     depends_on:
       - postgres
-
-  backend_with_chrome: &backend_with_chrome
-    <<: *backend
-    depends_on:
-      # - chrome
-      - postgres
-
-  shell:
-    <<: *backend_with_chrome
-    command: /bin/bash
-
-  server:
-    <<: *backend
-    command: bundle exec rails server -b 0.0.0.0
     ports:
       - "3000:3000"
       - "3001:3001"
-
-  # sidekiq:
-  #   <<: *backend
-  #   command: bundle exec sidekiq -C config/sidekiq.yml
 
   postgres:
     image: postgres:13
@@ -71,7 +55,6 @@ services:
       - ./log:/root/log:cached
     environment:
       - PSQL_HISTFILE=/root/log/.psql_history
-      # FIXME: For production, these have to be settable
       - POSTGRES_USER=pg
       - POSTGRES_PASSWORD=pg
     ports:
