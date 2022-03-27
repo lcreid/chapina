@@ -17,6 +17,8 @@ services:
       - bundle:/app/vendor/bundle
       - node_modules:/app/node_modules
       - packs:/app/public/packs
+      - ~/.ssh:${HOME}/.ssh
+      - /etc/passwd:/etc/passwd:ro
     environment:
       - NODE_ENV=development
       # You can use DATABASE_URL in non-development situation, but it messes
@@ -34,7 +36,7 @@ services:
       - SELENIUM_SERVER=http://chrome:4444/wd/hub
       - TEST_APP_HOST=server
       - TEST_APP_PORT=3001
-    # Running dev here is a little tricky. You have to remember that Ctrol-C
+    # Running dev here is a little tricky. You have to remember that Ctrl-C
     # only stops the container, it doesn't destroy it. So next time you up, it
     # will complain that the server is already running.
 
