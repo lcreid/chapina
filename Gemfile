@@ -57,7 +57,7 @@ group :development do
   # Use Capistrano for deployment
   gem 'capistrano-rails'
 
-  gem 'listen', '>= 3.0.5', '< 3.2'
+  gem 'listen'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
@@ -71,3 +71,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem "rails-i18n", "~> 6.0.0"
 
 # rubocop:enable Style/StringLiterals, Metrics/LineLength, Layout/EmptyLines
+
+gem "rexml", "~> 3.2"
