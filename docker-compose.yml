@@ -17,9 +17,13 @@ services:
       - bundle:/app/vendor/bundle
       - node_modules:/app/node_modules
       - packs:/app/public/packs
-      - ~/.ssh:${HOME}/.ssh
       - /etc/passwd:/etc/passwd:ro
+      # One or the other of the following lines might be redundant, or one might be
+      # better than the other.
+      - ~/.ssh:${HOME}/.ssh
+      - ${SSH_AUTH_SOCK}:/ssh-agent
     environment:
+      - SSH_AUTH_SOCK=/ssh-agent
       - NODE_ENV=development
       # You can use DATABASE_URL in non-development situation, but it messes
       # up the `rails db:*` tasks in a development situation.
