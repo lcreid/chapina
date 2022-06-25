@@ -39,6 +39,9 @@
 # For Alpine images
 .ash_history
 
+.gem/
+.ssh/
+
 vendor/bundle
 
 # Linux users need one of these to set their user and group.
