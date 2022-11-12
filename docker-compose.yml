@@ -53,6 +53,10 @@ services:
       - "3000:3000"
       - "3001:3001"
 
+  shell:
+    <<: *web
+    command: /bin/bash
+
   postgres:
     image: postgres:13
     volumes:
