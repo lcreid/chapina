@@ -10,7 +10,7 @@ end
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'pg'
-gem 'rails', '~> 6.1.0'
+gem 'rails', '~> 7.0.0'
 # Use Puma as the app server
 gem 'puma', '~> 6.0'
 # Use SCSS for stylesheets
@@ -36,7 +36,7 @@ gem 'bootsnap'
 gem 'bootstrap', '~> 4.0'
 gem 'bootstrap_form', "~> 4.0"
 gem 'devise'
-gem 'devise-bootstrap-form'
+gem 'devise-bootstrap-form', "~> 0.0"
 gem 'devise-i18n'
 gem 'jquery-rails'
 gem 'popper_js'
@@ -70,7 +70,7 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
-gem "rails-i18n", "~> 6.0.0"
+gem "rails-i18n"
 
 # rubocop:enable Style/StringLiterals, Metrics/LineLength, Layout/EmptyLines
 
