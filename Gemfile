@@ -40,9 +40,6 @@ gem 'devise-bootstrap-form', "~> 0.0"
 gem 'devise-i18n'
 gem 'jquery-rails'
 gem 'popper_js'
-source 'https://rails-assets.org' do
-  gem 'rails-assets-tether', '>= 1.3.3'
-end
 # End Bootstrap
 
 gem "net-ssh", github: "net-ssh/net-ssh"
