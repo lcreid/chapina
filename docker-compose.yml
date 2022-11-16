@@ -5,7 +5,7 @@ version: '3.3'
 # And:
 # https://medium.com/@retrorubies/chrome-as-a-service-for-rails-testing-b1a45e70fec1
 services:
-  web: &web
+  shell: &shell
     image: jade:rails-app-3.0-postgres-13-bullseye
     tmpfs:
       - /tmp
@@ -43,19 +43,19 @@ services:
     # Running dev here is a little tricky. You have to remember that Ctrl-C
     # only stops the container, it doesn't destroy it. So next time you up, it
     # will complain that the server is already running.
+    command: /bin/bash
 
     # It might be okay as long as you remember to start or run the container,
     # instead of trying up, but I haven't had a chance to test it yet.
-    command: bin/rails s -b 0.0.0.0
     depends_on:
       - postgres
+
+  web: &web
+    <<: *shell
+    command: bin/rails s -b 0.0.0.0
     ports:
       - "3000:3000"
       - "3001:3001"
-
-  shell:
-    <<: *web
-    command: /bin/bash
 
   postgres:
     image: postgres:13
