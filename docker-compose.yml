@@ -14,8 +14,6 @@ services:
     volumes:
       - .:/app:cached
       - rails_cache:/app/tmp/cache
-      - bundle:/app/vendor/bundle
-      - node_modules:/app/node_modules
       - packs:/app/public/packs
       - /etc/passwd:/etc/passwd:ro
       # One or the other of the following lines might be redundant, or one might be
@@ -100,7 +98,5 @@ services:
 # postgres user or password, you need to `docker volume rm <project_volume>`.
 volumes:
   postgres:
-  bundle:
-  node_modules:
   rails_cache:
   packs:
