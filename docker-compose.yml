@@ -1,68 +1,39 @@
-version: '3.3'
-
 # Set up the Selenium container based on the Selenium official:
 # https://github.com/SeleniumHQ/docker-selenium/blob/trunk/docker-compose-v3.yml
 # And:
 # https://medium.com/@retrorubies/chrome-as-a-service-for-rails-testing-b1a45e70fec1
 services:
-  shell: &shell
-    image: jade:rails-app-3.0-postgres-13-bullseye
-    tmpfs:
-      - /tmp
+  shell:
+    image: lenchoreyes/jade:rails-app-3.0-postgres-bullseye
     stdin_open: true
     tty: true
     volumes:
       - .:/app:cached
-      - rails_cache:/app/tmp/cache
-      - packs:/app/public/packs
-      - /etc/passwd:/etc/passwd:ro
-      # One or the other of the following lines might be redundant, or one might be
-      # better than the other.
-      - ~/.ssh:${HOME}/.ssh
-      - ${SSH_AUTH_SOCK}:/ssh-agent
     environment:
       - SSH_AUTH_SOCK=/ssh-agent
       - NODE_ENV=development
-      # You can use DATABASE_URL in non-development situation, but it messes
-      # up the `rails db:*` tasks in a development situation.
-      # - DATABASE_URL=postgres://pg:pg@postgres:5432
-      - DATABASE_HOST=postgres
       - BOOTSNAP_CACHE_DIR=/usr/local/bundle/_bootsnap
-      - WEBPACKER_DEV_SERVER_HOST=webpacker
       - WEB_CONCURRENCY=1
-      - EDITOR=vi
-      # SELENIUM_HUB_URL was a suggestion from the Internet when you use
-      # Selenium Hub, which is good for testing a range of browsers.
-      # - SELENIUM_HUB_URL=http://selenium-hub:4444/wd/hub
-      # Going to use a generic name for where Selenium is
-      - SELENIUM_SERVER=http://chrome:4444/wd/hub
-      - TEST_APP_HOST=server
+      - HISTFILE=/app/.bash_history
+      - DATABASE_HOST=postgres
+      - SELENIUM_HOST=selenium
+      - SELENIUM_PORT=4444
+      - TEST_APP_HOST=shell
       - TEST_APP_PORT=3001
-    # Running dev here is a little tricky. You have to remember that Ctrl-C
-    # only stops the container, it doesn't destroy it. So next time you up, it
-    # will complain that the server is already running.
-    command: /bin/bash
-
-    # It might be okay as long as you remember to start or run the container,
-    # instead of trying up, but I haven't had a chance to test it yet.
-    depends_on:
-      - postgres
-
-  web: &web
-    <<: *shell
-    command: bin/rails s -b 0.0.0.0
     ports:
       - "3000:3000"
       - "3001:3001"
+    command: /bin/bash
+    depends_on:
+      - postgres
 
   postgres:
-    image: postgres:13
+    image: postgres:alpine
     volumes:
-      - .psqlrc:/root/.psqlrc:ro
       - postgres:/var/lib/postgresql/data
-      - ./log:/root/log:cached
     environment:
       - PSQL_HISTFILE=/root/log/.psql_history
+      # For production, these have to be settable
       - POSTGRES_USER=pg
       - POSTGRES_PASSWORD=pg
     ports:
@@ -71,32 +42,17 @@ services:
       test: pg_isready -U pg -h 127.0.0.1
       interval: 5s
 
-  # webpacker:
-  #   <<: *app
-  #   command: ./bin/webpack-dev-server
-  #   ports:
-  #     - '3035:3035'
-  #   volumes:
-  #     - .:/app:cached
-  #     - bundle:/usr/local/bundle
-  #     - node_modules:/app/node_modules
-  #     - packs:/app/public/packs
-  #   environment:
-  #     - NODE_ENV=${NODE_ENV:-development}
-  #     - RAILS_ENV=${RAILS_ENV:-development}
-  #     - WEBPACKER_DEV_SERVER_HOST=0.0.0.0
+  selenium:
+    image: selenium/standalone-chrome:118.0
+    logging:
+      driver: none
+    stdin_open: true
+    tty: true
+    environment:
+      - LANG=en_CA.UTF-8
+    ports:
+      - '4444:4444'
+      - '5900:5900'
 
-  # chrome:
-  #   image: selenium/standalone-chrome:${CHROME_VERSION}
-  #   volumes:
-  #     - /dev/shm:/dev/shm
-  #   ports:
-  #     - "4444:4444"
-
-# The volumes are storage that docker-compose manages and maintains across rebuilds
-# of the images and containers. If, for example, you need to change the default
-# postgres user or password, you need to `docker volume rm <project_volume>`.
 volumes:
   postgres:
-  rails_cache:
-  packs:
