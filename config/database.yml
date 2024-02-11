@@ -23,7 +23,7 @@ production:
   <<: *default
   username: <%= Rails.application.secrets.database_username || ENV["DATABASE_USERNAME"] %>
   password: <%= Rails.application.secrets.database_password || ENV["DATABASE_PASSWORD"] %>
-  host: postgres-a
+  host: <%= ENV["DATABASE_HOST"] || "postgres-a" %>
   database: chapina
   # host: weit-rds-a.cwfow80ezu1x.ca-central-1.rds.amazonaws.com
   # database: plazachapina_prod
