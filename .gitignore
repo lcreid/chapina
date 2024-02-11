@@ -47,4 +47,10 @@ vendor/bundle
 # Linux users need one of these to set their user and group.
 docker-compose.override.yml
 
+# Additional for Vscode container extension.
+.cache/
+.vscode-server/
+.gnupg/
+.ssh/
+
 # End of the stuff ignored for Docker
