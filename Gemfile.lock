@@ -1,9 +1,3 @@
-GIT
-  remote: https://github.com/net-ssh/net-ssh.git
-  revision: f54a2270dba3974081663b9780b493ed8d332a07
-  specs:
-    net-ssh (7.2.2.rc1)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -171,6 +165,7 @@ GEM
       net-ssh (>= 5.0.0, < 8.0.0)
     net-smtp (0.4.0.1)
       net-protocol
+    net-ssh (7.2.1)
     nio4r (2.7.0)
     nokogiri (1.16.2-x86_64-linux)
       racc (~> 1.4)
@@ -295,7 +290,6 @@ DEPENDENCIES
   jbuilder (~> 2.5)
   jquery-rails
   listen
-  net-ssh!
   pg
   popper_js
   puma (~> 6.0)
