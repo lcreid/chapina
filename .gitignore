@@ -43,6 +43,8 @@
 .ssh/
 
 vendor/bundle
+compose.override.yml
+.gitconfig
 
 # Linux users need one of these to set their user and group.
 docker-compose.override.yml
