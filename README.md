@@ -1,6 +1,6 @@
 # chapina
 
-Aplicativo para promover participación cívica de chapin@s en el exterior
+Aplicativo para promover participación cívica de chapinxs en el exterior
 
 ## Desarrollo
 
@@ -17,9 +17,9 @@ docker ps
 docker exec -it <container-ID> /bin/bash
 ```
 
-En Linux, cree un archivo `docker-compose.override.yml`, así:
+En Linux, cree un archivo `compose.override.yml`, así:
 
-```
+```yaml
 version: '3.3'
 
 # https://blog.giovannidemizio.eu/2021/05/24/how-to-set-user-and-group-in-docker-compose/
