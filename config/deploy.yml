@@ -1,0 +1,45 @@
+service: plazachapina
+
+image: lenchoreyes/plazachapina
+
+servers:
+  web:
+    - kamal-a
+
+proxy:
+  ssl: true
+  host: plazachapina.ca
+  app_port: 3000
+
+registry:
+  username: lcreid@jadesystems.ca
+
+  password:
+    - KAMAL_REGISTRY_PASSWORD
+
+builder:
+  arch: amd64
+
+env:
+  secret:
+    - POSTGRES_USER
+    - POSTGRES_PASSWORD
+    - RAILS_MASTER_KEY
+  clear:
+    DATABASE_HOST: plazachapina-db
+
+ssh:
+  user: deploy
+
+asset_path: /rails/public/assets
+
+accessories:
+  db:
+    image: postgres:17-alpine
+    host: kamal-a
+    env:
+      secret:
+        - POSTGRES_USER
+        - POSTGRES_PASSWORD
+    directories:
+      - postgres:/var/lib/postgresql/data
