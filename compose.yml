@@ -37,13 +37,6 @@ services:
       test: pg_isready -U pg -h 127.0.0.1
       interval: 5s
 
-  playwright: # this is our PLAYWRIGHT_HOST value
-    image: mcr.microsoft.com/playwright:v1.61.0-noble
-    command: >
-      /bin/sh -c "npx -y playwright@1.61.0 run-server --port 3000 --host 0.0.0.0 --path /ws"
-    init: true
-    restart: unless-stopped
-
 volumes:
   dev_home:
   postgres:
