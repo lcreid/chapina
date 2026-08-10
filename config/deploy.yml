@@ -45,7 +45,7 @@ accessories:
       - postgres:/var/lib/postgresql/data
 
   backup:
-    image: ghcr.io/crmne/kamal-backup:0.4.1
+    image: ghcr.io/crmne/kamal-backup:0.5.0
     host: kamal-a
     files:
       - config/kamal-backup.yml:/app/config/kamal-backup.yml:ro
