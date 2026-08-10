@@ -43,6 +43,7 @@ gem 'popper_js'
 # End Bootstrap
 
 group :development do
+  gem "dotenv"
   gem "kamal"
   gem "kamal-backup"
   gem 'listen'
