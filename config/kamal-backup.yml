@@ -9,7 +9,7 @@ databases:
 paths:
   # - /storage
 restic:
-  repository: sftp:admin@fs-2:/NetBackup/restic
+  repository: sftp:backup@fs-2:/NetBackup/restic
   password:
     secret: RESTIC_PASSWORD
   init_if_missing: true

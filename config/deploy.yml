@@ -54,6 +54,7 @@ accessories:
         - POSTGRES_USER
         - POSTGRES_PASSWORD
         - RESTIC_PASSWORD
+        - SSHPASS
     volumes:
       # - chapina_storage:/storage
       - chapina_backup_state:/var/lib/kamal-backup
